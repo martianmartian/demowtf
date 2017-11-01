@@ -38,14 +38,14 @@ var app = angular.module("indexApp", [])
   <div>
      <ul ng-if="which==1">
         <li ng-repeat="y in data.text">
-            <span>{{ y }}</span>
+            <span> {{ y }}</span>
         </li>
      </ul>
   </div>
   <div>
       <ul ng-if="which==2">
         <li ng-repeat="z in data.pic">
-            <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
+            <img ng-src="{{z}}" alt="">
         </li>
       </ul>
   </div>
@@ -59,12 +59,8 @@ var app = angular.module("indexApp", [])
     $scope.changebackground = function(url){
       centralValue.background=url
     }
-    $scope.addImg = function (imgUrl) {
-        var imgU = imgUrl;
-        console.log(imgU);
-        var _img = "<img src='"+ imgU +"' />";
+    //$scope.
 
-    }
   }
 })
 .value('centralValue',{
@@ -88,7 +84,8 @@ var app = angular.module("indexApp", [])
 .component('centralPanel', {
   template: `
     <h1>part central</h1>
-    <div class="center-c">
+    <div>
+      <img ng-src="{{data.background}}" alt="">
       <span ng-repeat="t in data.series">
         <span>{{t}}</span>
       </span>

@@ -61,6 +61,9 @@ var app = angular.module("indexApp", [])
     }
     //$scope.
 
+
+    // centralValue.series[centralValue.time]["pic"].append("url")
+
   }
 })
 .value('centralValue',{
@@ -77,7 +80,7 @@ var app = angular.module("indexApp", [])
     }
     */
   ],
-  //totalSeries:[0,1,2,3,4],
+  totalSeries:[0,1,2,3,4],
   time:0
   
 })
@@ -86,7 +89,7 @@ var app = angular.module("indexApp", [])
     <h1>part central</h1>
     <div>
       <img ng-src="{{data.background}}" alt="">
-      <span ng-repeat="t in data.series">
+      <span ng-repeat="t in currentSeries">
         <span>{{t}}</span>
       </span>
     </div>
@@ -96,16 +99,31 @@ var app = angular.module("indexApp", [])
 
     $scope.currentSeries = (function(){
       console.log("here once")
-      // for i=
-      // Array($scope.data.time)
-      return []
+      var data = [];
+      var length = 5; // user defined length
+
+      for(var i = 0; i < $scope.data.time; i++) {
+          data.push(i);
+      }
+
+      return data
     })()
   }
 })
 .component('bottomPanel', {
-  template: '<h1>Hellow3</h1>',
-  controller: function(){
-
+  template: 
+  `
+  <div>
+    <span ng-repeat="i in data.totalSeries"
+      ng-click="goTo(i)"
+      >{{i}}</span>
+  </div>
+  `,
+  controller: function($scope,centralValue){
+    $scope.data = centralValue
+    $scope.goTo = function(i){
+      console.log(i)
+    }
   }
 })
 .component('rightPanel', {

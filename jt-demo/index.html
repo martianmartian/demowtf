@@ -45,22 +45,28 @@ var app = angular.module("indexApp", [])
   <div>
       <ul ng-if="which==2">
         <li ng-repeat="z in data.pic">
-            <img ng-src="{{z}}" alt="">
+            <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
         </li>
       </ul>
   </div>
   `,
   controller: function($scope,leftValue,centralValue) {
-    $scope.data = leftValue;
-    $scope.showit = function(index){
-      $scope.which = index
-    }
-    $scope.which = 0
-    $scope.changebackground = function(url){
-      centralValue.background=url
-    }
-    //$scope.
-
+      $scope.data = leftValue;
+      $scope.showit = function (index) {
+          $scope.which = index
+      }
+      $scope.which = 0
+      $scope.changebackground = function (url) {
+          var bgbox = document.getElementById("center-c");
+          bgbox.style.background = "url("+url+") no-repeat 0 0";
+      }
+      $scope.addImg = function (imgUrl) {
+          var imgU = imgUrl;
+          var _img = "<img src='" + imgU + "' />";
+          console.log(_img);
+          var bgbox = document.getElementById("center-c");
+          bgbox.appendChild(_img);
+      }
   }
 })
 .value('centralValue',{
@@ -84,8 +90,7 @@ var app = angular.module("indexApp", [])
 .component('centralPanel', {
   template: `
     <h1>part central</h1>
-    <div>
-      <img ng-src="{{data.background}}" alt="">
+    <div id="center-c" class="center-c">
       <span ng-repeat="t in data.series">
         <span>{{t}}</span>
       </span>
@@ -96,16 +101,31 @@ var app = angular.module("indexApp", [])
 
     $scope.currentSeries = (function(){
       console.log("here once")
-      // for i=
-      // Array($scope.data.time)
-      return []
+      var data = [];
+      var length = 5; // user defined length
+
+      for(var i = 0; i < $scope.data.time; i++) {
+          data.push(i);
+      }
+
+      return data
     })()
   }
 })
 .component('bottomPanel', {
-  template: '<h1>Hellow3</h1>',
-  controller: function(){
-
+  template:
+  `
+  <div>
+    <span ng-repeat="i in data.totalSeries"
+      ng-click="goTo(i)"
+      >{{i}}</span>
+  </div>
+  `,
+  controller: function($scope,centralValue){
+    $scope.data = centralValue
+    $scope.goTo = function(i){
+      console.log(i)
+    }
   }
 })
 .component('rightPanel', {

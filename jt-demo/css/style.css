@@ -50,7 +50,9 @@ ul,li,ol{
 .center-c{
     width:30%;
     height:60%;
-    background-color: #f00;
+    background-color: #dddddd;
+    border:1px solid #cccccc;
+    border-radius: 3px;
     position: absolute;
     left: 0;
     right: 0;

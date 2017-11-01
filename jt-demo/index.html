@@ -44,8 +44,20 @@ var app = angular.module("indexApp", [])
 
   }
 })
-.value('scrollValue',{
-  
+.value('centralValue',{
+  series:[0,1,2,3,4]
+  /*
+  0:{
+    "background":[],
+    "text":[],
+    "pic":[]
+  },
+  1:{
+    "background":[],
+    "text":[],
+    "pic":[]
+  }
+  */
 })
 .component('centralPanel', {
   template: `
@@ -54,8 +66,10 @@ var app = angular.module("indexApp", [])
       <img ng-src="{{data.background[0]}}" alt="">
     </div>
   `,
-  controller: function($scope,leftValue) {
-    $scope.data = leftValue
+  controller: function($scope,centralValue) {
+    $scope.data = centralValue
+    $scope.time = 0
+
   }
 })
 .component('bottomPanel', {

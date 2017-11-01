@@ -62,10 +62,13 @@ var app = angular.module("indexApp", [])
       }
       $scope.addImg = function (imgUrl) {
           var imgU = imgUrl;
-          var _img = "<img src='" + imgU + "' />";
-          console.log(_img);
+          var _img = document.createElement("img");
+          _img.setAttribute("src",imgU);
           var bgbox = document.getElementById("center-c");
           bgbox.appendChild(_img);
+          centralValue.background = imgU;
+          centralValue.series[centralValue.time]["pic"].append("url");
+          console.log("bg"+  centralValue.background +"ser" + centralValue.series);
       }
   }
 })

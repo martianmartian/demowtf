@@ -12,21 +12,19 @@
 var wtf = undefined;
 var app = angular.module("indexApp", [])
 .value("leftValue",{
-  "a":"a",
-  "b":"b"
+  "background":["images/background/1.jpg","images/background/2.jpg","images/background/3.jpg"],
+  "text":["haha","hehe"],
+  "pic":["images/others/1.jpg","images/others/2.jpg"]
 })
 .component('leftPanel', {
-  template: 
+  template:
   `
   <h1>Hellow1</h1>
-  {{a}}
-  {{b}}
+  <img ng-src="{{data.background[0]}}" alt="">
+  {{data.a}}
   `,
-  transclude: true,
   controller: function($scope,leftValue) {
-    var vm = this
-    wtf = leftValue
-    vm
+    $scope.data = leftValue
 
   }
 })

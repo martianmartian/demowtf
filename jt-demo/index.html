@@ -70,7 +70,9 @@ var app = angular.module("indexApp", [])
     <h1>part central</h1>
     <div>
       <img ng-src="{{data.background}}" alt="">
-      <span></span>
+      <span ng-repeat="t in data.series">
+        <span>{{i}}</span>
+      </span>
     </div>
   `,
   controller: function($scope,centralValue) {

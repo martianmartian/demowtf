@@ -40,14 +40,14 @@ var app = angular.module("indexApp", [])
       <h1>图片</h1>
       <ul>
         <li ng-repeat="z in data.pic">
-            <img src="{{z}}" alt="">
+            <img ng-src="{{z}}" alt="">
         </li>
       </ul>
   </div>
   `,
   controller: function($scope,leftValue) {
     $scope.data = leftValue;
-    console.log($scope.data.pic);
+    
 
   }
 })

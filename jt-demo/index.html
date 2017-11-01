@@ -73,6 +73,8 @@ var app = angular.module("indexApp", [])
 })
 .value('centralValue',{
   background:"images/background/1.jpg",
+  
+  time:0,
   series:[0,1],
   0:{
     "text":[],
@@ -82,7 +84,6 @@ var app = angular.module("indexApp", [])
     "text":[],
     "pic":[]
   },
-  time:0,
   proto:{
     "text":[],
     "pic":[]
@@ -101,6 +102,7 @@ var app = angular.module("indexApp", [])
   controller: function($scope,centralValue){
     $scope.data = centralValue
 
+    
     // $scope.currentSeries = (function(){
     //   console.log("here once")
     //   var data = [];
@@ -129,13 +131,13 @@ var app = angular.module("indexApp", [])
     $scope.data = centralValue
     $scope.goTo = function(i){
       centralValue.time = i
-      console.log(centralValue.time)
+      // console.log(centralValue.time)
     }
     $scope.addTime = function(){
       var newIndex = centralValue.series.length
       centralValue.series.push(newIndex)
       centralValue[newIndex] = centralValue.proto
-      console.log(centralValue)
+      // console.log(centralValue)
     }
   }
 })

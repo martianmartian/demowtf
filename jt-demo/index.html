@@ -10,6 +10,7 @@
 </div>
 
 <script>
+'use strict'
 var wtf = undefined;
 var app = angular.module("indexApp", [])
 .value("leftValue",{
@@ -74,8 +75,13 @@ var app = angular.module("indexApp", [])
 .value('centralValue',{
   background:"images/background/1.jpg",
   
-  time:0,
+  time: (function(){
+    console.log(centralValue)
+    return currentseries.length-1
+  })() ,
+  currentseries:[0], //series of integer to time
   series:[0,1],
+
   0:{
     "text":[],
     "pic":[]
@@ -94,8 +100,8 @@ var app = angular.module("indexApp", [])
   template: `
     <h1>part central</h1>
     <div id="center-c" class="center-c" >
-      <span ng-repeat="t in data.series">
-        <span>{{t}}</span>
+      <span ng-repeat="t in data.currentseries">
+        <img ng-src="{{data[t]['pic'][0]}}" alt="">
       </span>
     </div>
   `,
@@ -103,26 +109,16 @@ var app = angular.module("indexApp", [])
     $scope.data = centralValue
 
     
-    // $scope.currentSeries = (function(){
-    //   console.log("here once")
-    //   var data = [];
-    //   var length = 5; // user defined length
-
-    //   for(var i = 0; i < $scope.data.time; i++) {
-    //       data.push(i);
-    //   }
-
-    //   return data
-    // })()
   }
 })
 .component('bottomPanel', {
   template:
   `
   <div>
-    <span ng-repeat="i in data.series"
+    <button ng-repeat="i in data.series"
       ng-click="goTo(i)"
-      >{{i}}</span>
+      >{{i}}</button>
+
       <button type="" ng-click="addTime()">+</button>
       <button type="">-</button>
   </div>
@@ -130,14 +126,15 @@ var app = angular.module("indexApp", [])
   controller: function($scope,centralValue){
     $scope.data = centralValue
     $scope.goTo = function(i){
-      centralValue.time = i
-      // console.log(centralValue.time)
+      centralValue.currentseries = []
+      for (var to=0;to<i+1;to++){
+        centralValue.currentseries.push(to)
+      }
     }
     $scope.addTime = function(){
       var newIndex = centralValue.series.length
       centralValue.series.push(newIndex)
       centralValue[newIndex] = centralValue.proto
-      // console.log(centralValue)
     }
   }
 })

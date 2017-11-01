@@ -40,7 +40,7 @@ var app = angular.module("indexApp", [])
       <h1>图片</h1>
       <ul>
         <li ng-repeat="z in data.pic">
-            <img src="{{z}}" alt="">
+            <img ng-src="{{z}}" alt="">
         </li>
       </ul>
   </div>
@@ -52,15 +52,14 @@ var app = angular.module("indexApp", [])
   }
 })
 .value('centralValue',{
-  series:[0,1,2,3,4]
+  series:[0,1,2,3,4],
+  background:"images/background/1.jpg"
   /*
   0:{
-    "background":[],
     "text":[],
     "pic":[]
   },
   1:{
-    "background":[],
     "text":[],
     "pic":[]
   }
@@ -70,7 +69,8 @@ var app = angular.module("indexApp", [])
   template: `
     <h1>part central</h1>
     <div>
-      <img ng-src="{{data.background[0]}}" alt="">
+      <img ng-src="{{data.background}}" alt="">
+      <span></span>
     </div>
   `,
   controller: function($scope,centralValue) {

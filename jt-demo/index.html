@@ -88,8 +88,8 @@ var app = angular.module("indexApp", [])
   template: `
     <h1>part central</h1>
     <div>
-      <img ng-src="{{data.background}}" alt="">
-      <span ng-repeat="t in currentSeries">
+      <img ng-src = "{{data.background}}" alt="">
+      <span ng-repeat = "t in series">
         <span>{{t}}</span>
       </span>
     </div>
@@ -97,17 +97,17 @@ var app = angular.module("indexApp", [])
   controller: function($scope,centralValue){
     $scope.data = centralValue
 
-    $scope.currentSeries = (function(){
-      console.log("here once")
-      var data = [];
-      var length = 5; // user defined length
+    // $scope.currentSeries = (function(){
+    //   console.log("here once")
+    //   var data = [];
+    //   var length = 5; // user defined length
 
-      for(var i = 0; i < $scope.data.time; i++) {
-          data.push(i);
-      }
+    //   for(var i = 0; i < $scope.data.time; i++) {
+    //       data.push(i);
+    //   }
 
-      return data
-    })()
+    //   return data
+    // })()
   }
 })
 .component('bottomPanel', {
@@ -122,7 +122,8 @@ var app = angular.module("indexApp", [])
   controller: function($scope,centralValue){
     $scope.data = centralValue
     $scope.goTo = function(i){
-      console.log(i)
+      centralValue.time = i
+      console.log(centralValue.time)
     }
   }
 })

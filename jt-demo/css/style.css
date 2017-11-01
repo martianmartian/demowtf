@@ -7,9 +7,10 @@ ul,li,ol{
 }
 .leftbox{
     display: block;
-    width: 300px;
+    width: 20%;
     height:100%;
     border-right: 1px solid #cccccc;
+    float: left;
 }
 .leftbox .leftnav{
     width:20%;
@@ -25,7 +26,24 @@ ul,li,ol{
 .leftbox div {
     overflow: hidden;
 }
-
 .leftbox div ul li img{
     width:100%;
+}
+.centerbox{
+    width: 59%;
+    height:90%;
+    float: left;
+    background-color: #eeeeee;
+}
+.bottombox{
+    height:10%;
+    width:59%;
+    float: left;
+    background-color: #cccccc;
+}
+.rightbox{
+    display: block;
+    height:100%;
+    background-color: #dddddd;
+
 }

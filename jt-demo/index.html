@@ -68,17 +68,14 @@ var app = angular.module("indexApp", [])
           bgbox.appendChild(_img);
           centralValue.background = imgUrl;
           
-          centralValue[centralValue.time]["pic"].push(imgUrl)
+          centralValue[centralValue.time()]["pic"].push(imgUrl)
       }
   }
 })
 .value('centralValue',{
   background:"images/background/1.jpg",
   
-  time: (function(){
-    console.log(centralValue)
-    return currentseries.length-1
-  })() ,
+  time: function(){return this.currentseries.length-1},
   currentseries:[0], //series of integer to time
   series:[0,1],
 

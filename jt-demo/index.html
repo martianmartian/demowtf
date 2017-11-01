@@ -20,8 +20,13 @@ var app = angular.module("indexApp", [])
 .component('leftPanel', {
   template:
   `
+  <div class="leftnav">
+     <h1 ng-click="showit(0)">背景</h1>
+     <h1 ng-click="showit(1)">文字</h1>
+     <h1 ng-click="showit(2)">图片</h1>
+  </div>
+
   <div>
-    <h1 ng-click="showit(0)">背景</h1>
     <ul ng-if="which==0">
         <li ng-repeat="x in data.background">
             <img alt="" 
@@ -31,7 +36,6 @@ var app = angular.module("indexApp", [])
     </ul>
   </div>
   <div>
-     <h1 ng-click="showit(1)">文字</h1>
      <ul ng-if="which==1">
         <li ng-repeat="y in data.text">
             <span> {{ y }}</span>
@@ -39,7 +43,6 @@ var app = angular.module("indexApp", [])
      </ul>
   </div>
   <div>
-      <h1 ng-click="showit(2)">图片</h1>
       <ul ng-if="which==2">
         <li ng-repeat="z in data.pic">
             <img ng-src="{{z}}" alt="">

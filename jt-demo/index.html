@@ -24,7 +24,9 @@ var app = angular.module("indexApp", [])
     <h1 ng-click="showit(0)">背景</h1>
     <ul ng-if="which==0">
         <li ng-repeat="x in data.background">
-            <img ng-src="{{ x }}" alt="">
+            <img alt="" 
+              ng-src="{{ x }}"
+              ng-click="changebackground(x)">
         </li>
     </ul>
   </div>
@@ -45,17 +47,21 @@ var app = angular.module("indexApp", [])
       </ul>
   </div>
   `,
-  controller: function($scope,leftValue) {
+  controller: function($scope,leftValue,centralValue) {
     $scope.data = leftValue;
     $scope.showit = function(index){
-      console.log(index)
       $scope.which = index
     }
     $scope.which = 0
+    $scope.changebackground = function(url){
+      console.log(url)
+      centralValue.background=url
+    }
 
   }
 })
 .value('centralValue',{
+  background:"images/background/1.jpg",
   series:[
     /*
     0:{
@@ -69,7 +75,6 @@ var app = angular.module("indexApp", [])
     */
   ],
   //totalSeries:[0,1,2,3,4],
-  background:"images/background/1.jpg"
   
 })
 .component('centralPanel', {
@@ -82,7 +87,7 @@ var app = angular.module("indexApp", [])
       </span>
     </div>
   `,
-  controller: function($scope,centralValue) {
+  controller: function($scope,centralValue){
     $scope.data = centralValue
     $scope.time = 0
 

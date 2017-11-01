@@ -59,4 +59,9 @@ ul,li,ol{
     top:0;
     bottom:0;
     margin: auto;
+    background-size: 100% 100%;
+}
+.center-c img{
+    width:80%;
+
 }

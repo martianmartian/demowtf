@@ -34,6 +34,7 @@ ul,li,ol{
     height:90%;
     float: left;
     background-color: #eeeeee;
+    position: relative;
 }
 .bottombox{
     height:10%;
@@ -45,5 +46,15 @@ ul,li,ol{
     display: block;
     height:100%;
     background-color: #dddddd;
-
+}
+.center-c{
+    width:30%;
+    height:60%;
+    background-color: #f00;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+    margin: auto;
 }

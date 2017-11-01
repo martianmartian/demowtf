@@ -2,140 +2,144 @@
 <link rel="stylesheet" href="css/style.css" />
 <meta charset="utf-8" />
 <div ng-app="indexApp">
-  <left-panel class="leftbox"></left-panel>
-  <central-panel class="centerbox"></central-panel>
-  <bottom-panel class="bottombox"></bottom-panel>
-  <right-panel class="rightbox"></right-panel>
+    <left-panel class="leftbox"></left-panel>
+    <central-panel class="centerbox"></central-panel>
+    <bottom-panel class="bottombox"></bottom-panel>
+    <right-panel class="rightbox"></right-panel>
 
 </div>
 
 <script>
-var wtf = undefined;
-var app = angular.module("indexApp", [])
-.value("leftValue",{
-  "background":["images/background/1.jpg","images/background/2.jpg","images/background/3.jpg"],
-  "text":["haha","hehe"],
-  "pic":["images/others/1.jpg","images/others/2.jpg"]
-})
-.component('leftPanel', {
-  template:
-  `
-  <div class="leftnav">
-     <h1 ng-click="showit(0)">背景</h1>
-     <h1 ng-click="showit(1)">文字</h1>
-     <h1 ng-click="showit(2)">图片</h1>
-  </div>
+    var wtf = undefined;
+    var app = angular.module("indexApp", [])
+        .value("leftValue",{
+            "background":["images/background/1.jpg","images/background/2.jpg","images/background/3.jpg"],
+            "text":["haha","hehe"],
+            "pic":["images/others/1.jpg","images/others/2.jpg"]
+        })
+        .component('leftPanel', {
+            template:
+                `
+                  <div class="leftnav">
+                     <h1 ng-click="showit(0)">背景</h1>
+                     <h1 ng-click="showit(1)">文字</h1>
+                     <h1 ng-click="showit(2)">图片</h1>
+                  </div>
 
-  <div>
-    <ul ng-if="which==0">
-        <li ng-repeat="x in data.background">
-            <img alt="" 
-              ng-src="{{ x }}"
-              ng-click="changebackground(x)">
-        </li>
-    </ul>
-  </div>
-  <div>
-     <ul ng-if="which==1">
-        <li ng-repeat="y in data.text">
-            <span> {{ y }}</span>
-        </li>
-     </ul>
-  </div>
-  <div>
-      <ul ng-if="which==2">
-        <li ng-repeat="z in data.pic">
-            <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
-        </li>
-      </ul>
-  </div>
-  `,
-  controller: function($scope,leftValue,centralValue) {
-      $scope.data = leftValue;
-      $scope.showit = function (index) {
-          $scope.which = index
-      }
-      $scope.which = 0
-      $scope.changebackground = function (url) {
-          var bgbox = document.getElementById("center-c");
-          bgbox.style.background = "url("+url+") no-repeat 0 0";
-      }
-      $scope.addImg = function (imgUrl) {
-          var imgU = imgUrl;
-          var _img = document.createElement("img");
-          _img.setAttribute("src",imgU);
-          var bgbox = document.getElementById("center-c");
-          bgbox.appendChild(_img);
-          centralValue.background = imgU;
-          centralValue.series[centralValue.time]["pic"].append("url");
-          console.log("bg"+  centralValue.background +"ser" + centralValue.series);
-      }
-  }
-})
-.value('centralValue',{
-  background:"images/background/1.jpg",
-  series:[
-    /*
-    0:{
-      "text":[],
-      "pic":[]
-    },
-    1:{
-      "text":[],
-      "pic":[]
-    }
-    */
-  ],
-  //totalSeries:[0,1,2,3,4],
-  time:0
-  
-})
-.component('centralPanel', {
-  template: `
-    <h1>part central</h1>
-    <div id="center-c" class="center-c">
-      <span ng-repeat="t in data.series">
-        <span>{{t}}</span>
-      </span>
-    </div>
-  `,
-  controller: function($scope,centralValue){
-    $scope.data = centralValue
+                  <div>
+                    <ul ng-if="which==0">
+                        <li ng-repeat="x in data.background">
+                            <img alt="" ng-src="{{ x }}" ng-click="changebackground(x)">
+                        </li>
+                    </ul>
+                  </div>
+                  <div>
+                     <ul ng-if="which==1">
+                        <li ng-repeat="y in data.text">
+                            <span> {{ y }}</span>
+                        </li>
+                     </ul>
+                  </div>
+                  <div>
+                  <ul ng-if="which==2">
+                    <li ng-repeat="z in data.pic">
+                        <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
+                    </li>
+                  </ul>
+              </div>
+              `,
+            controller: function($scope,leftValue,centralValue) {
+                $scope.data = leftValue;
+                $scope.showit = function (index) {
+                    $scope.which = index
+                }
+                $scope.which = 0
+                $scope.changebackground = function (url) {
+                    var bgbox = document.getElementById("center-c");
+                    bgbox.style.background = "url("+url+") no-repeat 0 0";
+                }
+                $scope.addImg = function (imgUrl) {
+                    var _img = document.createElement("img");
+                    _img.setAttribute("src",imgUrl);
+                    var bgbox = document.getElementById("center-c");
+                    bgbox.appendChild(_img);
+                    centralValue.background = imgUrl;
 
-    $scope.currentSeries = (function(){
-      console.log("here once")
-      var data = [];
-      var length = 5; // user defined length
+                    centralValue[centralValue.time]["pic"].push(imgUrl)
+                }
+            }
+        })
+        .value('centralValue',{
+            background:"images/background/1.jpg",
+            series:[0,1],
+            0:{
+                "text":[],
+                "pic":[]
+            },
+            1:{
+                "text":[],
+                "pic":[]
+            },
+            time:0,
+            proto:{
+                "text":[],
+                "pic":[]
+            }
 
-      for(var i = 0; i < $scope.data.time; i++) {
-          data.push(i);
-      }
+        })
+        .component('centralPanel', {
+            template: `
+                <h1>part central</h1>
+                <div id="center-c" class="center-c" >
 
-      return data
-    })()
-  }
-})
-.component('bottomPanel', {
-  template:
-  `
-  <div>
-    <span ng-repeat="i in data.totalSeries"
-      ng-click="goTo(i)"
-      >{{i}}</span>
-  </div>
-  `,
-  controller: function($scope,centralValue){
-    $scope.data = centralValue
-    $scope.goTo = function(i){
-      console.log(i)
-    }
-  }
-})
-.component('rightPanel', {
-  template: '<h1>Hellow4</h1>',
-  controller: function() {
+                </div>
+              `,
+            controller: function($scope,centralValue){
+                $scope.data = centralValue
 
-  }
-})
+                // $scope.currentSeries = (function(){
+                //   console.log("here once")
+                //   var data = [];
+                //   var length = 5; // user defined length
+
+                //   for(var i = 0; i < $scope.data.time; i++) {
+                //       data.push(i);
+                //   }
+
+                //   return data
+                // })()
+            }
+        })
+        .component('bottomPanel', {
+            template:
+                `
+              <div>
+                <span ng-repeat="i in data.series"
+                  ng-click="goTo(i)"
+                  >{{i}}</span>
+                  <button type="" ng-click="addTime()">+</button>
+                  <button type="">-</button>
+              </div>
+              `,
+            controller: function($scope,centralValue){
+                $scope.data = centralValue
+                $scope.goTo = function(i){
+                    centralValue.time = i
+                    // console.log(centralValue.time)
+                }
+                $scope.addTime = function(){
+                    var newIndex = centralValue.series.length
+                    centralValue.series.push(newIndex)
+                    centralValue[newIndex] = centralValue.proto
+                    // console.log(centralValue)
+                }
+            }
+        })
+        .component('rightPanel', {
+            template: '<h1>Hellow4</h1>',
+            controller: function() {
+
+            }
+        })
 
 </script>

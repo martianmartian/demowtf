@@ -28,10 +28,18 @@ var app = angular.module("indexApp", [])
 
   }
 })
+.value('scrollValue',{
+  
+})
 .component('centralPanel', {
-  template: '<h1>Hellow2</h1>',
-  controller: function() {
-
+  template: `
+    <h1>part central</h1>
+    <div>
+      <img ng-src="{{data.background[0]}}" alt="">
+    </div>
+  `,
+  controller: function($scope,leftValue) {
+    $scope.data = leftValue
   }
 })
 .component('bottomPanel', {

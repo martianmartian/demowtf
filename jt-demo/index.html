@@ -10,6 +10,7 @@
 </div>
 
 <script>
+'use strict'
 var wtf = undefined;
 var app = angular.module("indexApp", [])
 .value("leftValue",{
@@ -61,11 +62,11 @@ var app = angular.module("indexApp", [])
           bgbox.style.background = "url("+url+") no-repeat 0 0";
       }
       $scope.addImg = function (imgUrl) {
-          var _img = document.createElement("img");
-          _img.setAttribute("src",imgUrl);
-          var bgbox = document.getElementById("center-c");
-          bgbox.appendChild(_img);
-          centralValue.background = imgUrl;
+//          var _img = document.createElement("img");
+//          _img.setAttribute("src",imgUrl);
+//          var bgbox = document.getElementById("center-c");
+//          bgbox.appendChild(_img);
+//          centralValue.background = imgUrl;
           centralValue[centralValue.time()]["pic"].push(imgUrl)
       }
   }
@@ -95,7 +96,9 @@ var app = angular.module("indexApp", [])
     <h1>part central</h1>
     <div id="center-c" class="center-c" >
       <span ng-repeat="t in data.currentseries">
-        
+        <span ng-repeat="c in data[t]['pic']">
+                <img ng-src="{{ c }}" alt="" />
+        </span>
       </span>
     </div>
   `,
@@ -120,7 +123,7 @@ var app = angular.module("indexApp", [])
     $scope.goTo = function(i){
       centralValue.currentseries = []
       for (var to=0;to<i+1;to++){
-        centralValue.currentseries.push(to)
+          centralValue.currentseries.push(to)
       }
     }
     $scope.addTime = function(){

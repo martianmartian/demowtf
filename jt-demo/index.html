@@ -10,7 +10,6 @@
 </div>
 
 <script>
-'use strict'
 var wtf = undefined;
 var app = angular.module("indexApp", [])
 .value("leftValue",{
@@ -67,18 +66,13 @@ var app = angular.module("indexApp", [])
           var bgbox = document.getElementById("center-c");
           bgbox.appendChild(_img);
           centralValue.background = imgUrl;
-          
-          centralValue[centralValue.time]["pic"].push(imgUrl)
+          centralValue[centralValue.time()]["pic"].push(imgUrl)
       }
   }
 })
 .value('centralValue',{
   background:"images/background/1.jpg",
-  
-  time: (function(){
-    console.log(centralValue)
-    return currentseries.length-1
-  })() ,
+  time: function(){return this.currentseries.length-1},
   currentseries:[0], //series of integer to time
   series:[0,1],
 
@@ -101,14 +95,12 @@ var app = angular.module("indexApp", [])
     <h1>part central</h1>
     <div id="center-c" class="center-c" >
       <span ng-repeat="t in data.currentseries">
-        <img ng-src="{{data[t]['pic'][0]}}" alt="">
+        
       </span>
     </div>
   `,
   controller: function($scope,centralValue){
-    $scope.data = centralValue
-
-    
+    $scope.data = centralValue;
   }
 })
 .component('bottomPanel', {

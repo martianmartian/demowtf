@@ -6,10 +6,26 @@ ul,li,ol{
     list-style: none;
 }
 .leftbox{
+    display: block;
     width: 300px;
     height:100%;
     border-right: 1px solid #cccccc;
 }
-.leftbox div ul{
-    display: none;
+.leftbox .leftnav{
+    width:20%;
+    float: left;
+    background-color: #eeeeee;
+}
+.leftbox h1 {
+    padding:20px 0;
+    font-size:14px;
+    font-weight: normal;
+    text-align: center;
+}
+.leftbox div {
+    overflow: hidden;
+}
+
+.leftbox div ul li img{
+    width:100%;
 }

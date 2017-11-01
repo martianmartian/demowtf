@@ -1,7 +1,8 @@
 <script src="lib/angular.min.js"></script>
+<link rel="stylesheet" href="css/style.css" />
 <meta charset="utf-8" />
 <div ng-app="indexApp">
-  <left-panel></left-panel>
+  <left-panel class="leftbox"></left-panel>
   <central-panel></central-panel>
   <bottom-panel></bottom-panel>
   <right-panel></right-panel>
@@ -19,28 +20,34 @@ var app = angular.module("indexApp", [])
 .component('leftPanel', {
   template:
   `
-  <h1>背景</h1>
-  <ul>
-    <li ng-repeat="x in data.background">
-        <img ng-src="{{ x }}" alt="">
-    </li>
-  </ul>
-  <h1>文字</h1>
-  <ul>
-    <li ng-repeat="y in data.text">
-        <span> {{ y }}</span>
-    </li>
-  </ul>
-  <h1></h1>
-  <ul>
-    <li ng-repeat="y in data.text">
-        <span> {{ y }}</span>
-    </li>
-  </ul>
+  <div>
+    <h1>背景</h1>
+    <ul>
+        <li ng-repeat="x in data.background">
+            <img ng-src="{{ x }}" alt="">
+        </li>
+    </ul>
+  </div>
+  <div>
+     <h1>文字</h1>
+     <ul>
+        <li ng-repeat="y in data.text">
+            <span> {{ y }}</span>
+        </li>
+     </ul>
+  </div>
+  <div>
+      <h1>图片</h1>
+      <ul>
+        <li ng-repeat="z in data.pic">
+            <img src="{{z}}" alt="">
+        </li>
+      </ul>
+  </div>
   `,
   controller: function($scope,leftValue) {
     $scope.data = leftValue;
-    console.log($scope.data.background);
+    console.log($scope.data.pic);
 
   }
 })

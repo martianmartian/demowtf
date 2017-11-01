@@ -57,9 +57,9 @@ var app = angular.module("indexApp", [])
     }
     $scope.which = 0
     $scope.changebackground = function(url){
-      console.log(url)
       centralValue.background=url
     }
+    //$scope.
 
   }
 })
@@ -78,6 +78,7 @@ var app = angular.module("indexApp", [])
     */
   ],
   //totalSeries:[0,1,2,3,4],
+  time:0
   
 })
 .component('centralPanel', {
@@ -92,13 +93,18 @@ var app = angular.module("indexApp", [])
   `,
   controller: function($scope,centralValue){
     $scope.data = centralValue
-    $scope.time = 0
 
+    $scope.currentSeries = (function(){
+      console.log("here once")
+      // for i=
+      // Array($scope.data.time)
+      return []
+    })()
   }
 })
 .component('bottomPanel', {
   template: '<h1>Hellow3</h1>',
-  controller: function() {
+  controller: function(){
 
   }
 })

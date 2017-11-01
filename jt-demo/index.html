@@ -61,32 +61,28 @@ var app = angular.module("indexApp", [])
           bgbox.style.background = "url("+url+") no-repeat 0 0";
       }
       $scope.addImg = function (imgUrl) {
-          var imgU = imgUrl;
           var _img = document.createElement("img");
-          _img.setAttribute("src",imgU);
+          _img.setAttribute("src",imgUrl);
           var bgbox = document.getElementById("center-c");
           bgbox.appendChild(_img);
-          centralValue.background = imgU;
-          centralValue.series[centralValue.time]["pic"].append("url");
-          console.log("bg"+  centralValue.background +"ser" + centralValue.series);
+          centralValue.background = imgUrl;
+          
+          centralValue[centralValue.time]["pic"].push(imgUrl)
       }
   }
 })
 .value('centralValue',{
   background:"images/background/1.jpg",
-  series:[
-    /*
-    0:{
-      "text":[],
-      "pic":[]
-    },
-    1:{
-      "text":[],
-      "pic":[]
-    }
-    */
-  ],
-  //totalSeries:[0,1,2,3,4],
+  series:[0,1],
+  0:{
+    "text":[],
+    "pic":[]
+  },
+  1:{
+    "text":[],
+    "pic":[]
+  },
+  totalSeries:[0,1],
   time:0
   
 })
@@ -122,6 +118,8 @@ var app = angular.module("indexApp", [])
     <span ng-repeat="i in data.totalSeries"
       ng-click="goTo(i)"
       >{{i}}</span>
+      <button type="" ng-click="addTime">+</button>
+      <button type="">-</button>
   </div>
   `,
   controller: function($scope,centralValue){
@@ -129,6 +127,9 @@ var app = angular.module("indexApp", [])
     $scope.goTo = function(i){
       centralValue.time = i
       console.log(centralValue.time)
+    }
+    $scope.addTime = function(){
+
     }
   }
 })

@@ -1,5 +1,5 @@
 <script src="lib/angular.min.js"></script>
-
+<meta charset="utf-8" />
 <div ng-app="indexApp">
   <left-panel></left-panel>
   <central-panel></central-panel>
@@ -19,12 +19,28 @@ var app = angular.module("indexApp", [])
 .component('leftPanel', {
   template:
   `
-  <h1>Hellow1</h1>
-  <img ng-src="{{data.background[0]}}" alt="">
-  {{data.a}}
+  <h1>背景</h1>
+  <ul>
+    <li ng-repeat="x in data.background">
+        <img ng-src="{{ x }}" alt="">
+    </li>
+  </ul>
+  <h1>文字</h1>
+  <ul>
+    <li ng-repeat="y in data.text">
+        <span> {{ y }}</span>
+    </li>
+  </ul>
+  <h1></h1>
+  <ul>
+    <li ng-repeat="y in data.text">
+        <span> {{ y }}</span>
+    </li>
+  </ul>
   `,
   controller: function($scope,leftValue) {
-    $scope.data = leftValue
+    $scope.data = leftValue;
+    console.log($scope.data.background);
 
   }
 })

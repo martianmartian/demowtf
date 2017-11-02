@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    .centerbox{
+        width:100vw;
+        height: 100vh;
+    }
+    .centerbox h1{
+        display: none;
+    }
+    .center-c{
+        width:100%;
+        height:100%;
+        margin-top: 0;
+    }
+    .leftbox,.rightbox,.bottombox{
+        display: none;
+    }
+}

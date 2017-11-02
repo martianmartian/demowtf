@@ -2,8 +2,37 @@
     margin: 0;
     padding:0;
 }
+html,body{
+    height:100%;
+    width: 100%;
+}
+
 ul,li,ol{
     list-style: none;
+}
+.topbox{
+    height:59px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.topbox .leftNav{
+    float: left;
+    width:80px;
+    margin:0 20px;
+    line-height: 60px;
+}
+.topbox .leftNav img{
+    width:100%;
+}
+.topbox .rightNav{
+    float: right;
+}
+.topbox .rightNav ul li{
+    float: left;
+}
+.contentBox{
+    height: calc(100% - 60px);
+    overflow: hidden;
+    width:100%;
 }
 .leftbox{
     display: block;
@@ -52,7 +81,7 @@ ul,li,ol{
 }
 .center-c{
     width:35%;
-    height:65%;
+    height:75%;
     background-color: #dddddd;
     border:1px solid #cccccc;
     border-radius: 3px;

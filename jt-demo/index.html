@@ -7,37 +7,37 @@
     <script src="lib/angular.min.js"></script>
     <script src="js/common.js"></script>
 </head>
-<body>
-<div class="topbox">
-    <div class="leftNav">
-        <img src="images/logo.png" alt="">
+<body ng-app="indexApp">
+    <div class="topbox" ng-controller="topCont">
+        <div class="leftNav">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="rightNav">
+            <ul>
+                <li ng-click="preview()">
+                    <p><img src="images/yulan.png" alt=""></p>
+                    <span>预览</span>
+                </li>
+                <li ng-click="save()">
+                    <p><img src="images/baoc.png" alt=""></p>
+                    <span>保存</span>
+                </li>
+                <li ng-click="issue()">
+                    <p><img src="images/shangc.png" alt=""></p>
+                    <span>发布</span>
+                </li>
+                <li ng-click="exit()">
+                    <p><img src="images/tuichu.png" alt=""></p>
+                    <span>退出</span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="rightNav" >
-        <ul>
-            <li>
-                <p></p>
-                <span>预览</span>
-            </li>
-            <li>
-                <p></p>
-                <span>保存</span>
-            </li>
-            <li>
-                <p></p>
-                <span>发布</span>
-            </li>
-            <li>
-                <p></p>
-                <span>退出</span>
-            </li>
-        </ul>
+    <div class="contentBox">
+        <left-panel class="leftbox"></left-panel>
+        <central-panel class="centerbox"></central-panel>
+        <bottom-panel class="bottombox"></bottom-panel>
+        <right-panel class="rightbox"></right-panel>
     </div>
-</div>
-<div ng-app="indexApp" class="contentBox">
-    <left-panel class="leftbox"></left-panel>
-    <central-panel class="centerbox"></central-panel>
-    <bottom-panel class="bottombox"></bottom-panel>
-    <right-panel class="rightbox"></right-panel>
-</div>
 </body>
 </html>

@@ -6,37 +6,36 @@ var app = angular.module("indexApp", [])
         "pic":["images/others/1.jpg","images/others/2.jpg"]
     })
     .component('leftPanel', {
-        template:
-            `
-                  <div class="leftnav">
-                     <h1 ng-click="showit(0)">背景</h1>
-                     <h1 ng-click="showit(1)">文字</h1>
-                     <h1 ng-click="showit(2)">图片</h1>
-                  </div>
-                  <div>
-                    <ul ng-if="which==0">
-                        <li ng-repeat="x in data.background">
-                            <img alt=""
-                              ng-src="{{ x }}"
-                              ng-click="changebackground(x)">
-                        </li>
-                    </ul>
-                  </div>
-                  <div>
-                     <ul ng-if="which==1">
-                        <li ng-repeat="y in data.text">
-                            <span> {{ y }}</span>
-                        </li>
-                     </ul>
-                  </div>
-                  <div>
-                      <ul ng-if="which==2">
-                        <li ng-repeat="z in data.pic">
-                            <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
-                        </li>
-                      </ul>
-                  </div>
-                  `,
+        template: `
+          <div class="leftnav">
+             <h1 ng-click="showit(0)">背景</h1>
+             <h1 ng-click="showit(1)">文字</h1>
+             <h1 ng-click="showit(2)">图片</h1>
+          </div>
+          <div>
+            <ul ng-if="which==0">
+                <li ng-repeat="x in data.background">
+                    <img alt=""
+                      ng-src="{{ x }}"
+                      ng-click="changebackground(x)">
+                </li>
+            </ul>
+          </div>
+          <div>
+             <ul ng-if="which==1">
+                <li ng-repeat="y in data.text">
+                    <span> {{ y }}</span>
+                </li>
+             </ul>
+          </div>
+          <div>
+              <ul ng-if="which==2">
+                <li ng-repeat="z in data.pic">
+                    <img ng-src="{{z}}" ng-click="addImg(z)" alt="">
+                </li>
+              </ul>
+          </div>
+          `,
         controller: function($scope,leftValue,centralValue) {
             $scope.data = leftValue;
             $scope.showit = function (index) {
@@ -129,4 +128,18 @@ var app = angular.module("indexApp", [])
         controller: function() {
 
         }
-    })
+    });
+app.controller("topCont",function ($scope) {
+    $scope.preview = function () {
+        alert("preview!!!")
+    }
+    $scope.save = function () {
+        alert("save!!!")
+    }
+    $scope.issue = function () {
+        alert("issue!!!")
+    }
+    $scope.exit = function () {
+        alert("exit!!!")
+    }
+})

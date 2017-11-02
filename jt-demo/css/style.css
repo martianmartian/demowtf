@@ -28,6 +28,25 @@ ul,li,ol{
 }
 .topbox .rightNav ul li{
     float: left;
+    text-align: center;
+    width: 60px;
+    padding-top: 8px;
+    margin-right: 10px;
+}
+.topbox .rightNav ul li:hover{
+    cursor: pointer;
+}
+.topbox .rightNav ul li p{
+    height: 28px;
+    width:28px;
+    margin:0 auto;
+}
+.topbox .rightNav ul li p img{
+    height:100%;
+    width: 100%;
+}
+.topbox .rightNav ul li span{
+    font-size: 12px;
 }
 .contentBox{
     height: calc(100% - 60px);
@@ -58,7 +77,6 @@ ul,li,ol{
 .leftbox div ul li img{
     width:40%;
     margin: 10px 5%;
-    /*margin-left: 10%;*/
     float: left;
 }
 .centerbox{

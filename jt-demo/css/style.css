@@ -63,5 +63,6 @@ ul,li,ol{
 }
 .center-c img{
     width:80%;
+    position: absolute;
 
 }

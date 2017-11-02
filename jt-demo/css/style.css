@@ -27,7 +27,10 @@ ul,li,ol{
     overflow: hidden;
 }
 .leftbox div ul li img{
-    width:100%;
+    width:40%;
+    margin: 10px 5%;
+    /*margin-left: 10%;*/
+    float: left;
 }
 .centerbox{
     width: 59%;
@@ -48,18 +51,15 @@ ul,li,ol{
     background-color: #dddddd;
 }
 .center-c{
-    width:30%;
-    height:60%;
+    width:35%;
+    height:400px;
     background-color: #dddddd;
     border:1px solid #cccccc;
     border-radius: 3px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:0;
-    bottom:0;
+    position: relative;
     margin: auto;
     background-size: 100% 100%;
+    margin-top: 40px;
 }
 .center-c img{
     width:80%;
